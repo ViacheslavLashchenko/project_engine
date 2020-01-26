@@ -1,0 +1,4 @@
+AddDefaultCharset utf-8
+RewriteEngine on
+RewriteBase /project_engine/
+RewriteRule !.(css|js|jpg|jpeg|png|gif|ico|cur|map|php3|swf|ttf|tgz|php|html)$ index.php
