@@ -1,16 +1,17 @@
 <?php
-    if(isset($_SESSION['login'])) {
-        $login='Здравствуйте, '.$_SESSION['login'].'!';
+    if(isset($_SESSION['first_name'])) {
+        $login = 'Здравствуйте, '.$_SESSION['first_name'].'!';
     }
 // Проверяем, пусты ли переменные логина и id пользователя
 // Если пусты, то
-    if (empty($_SESSION['login']) || empty($_SESSION['id'])) {
-        echo "<div class='alert alert-primary center' role='alert'>Вы вошли на сайт, как гость</div><br>
+    if (empty($_SESSION['login']) || empty($_SESSION['first_name'])) {
+        echo "
+        <div class='alert alert-primary center' role='alert'>Вы вошли на сайт, как гость</div><br>
             <div class='container'>
                 <div class='row'>
                     <div class='col-lg'></div>
                     <div class='col-lg'>
-                        <form action='script1.php' method='post'>
+                        <form action='' method='post'>
                             <div class='form-group'>
                                 <label for='exampleInputEmail1'>Логин</label>
                                 <input type='text' name='login' class='form-control' id='exampleInputLogin1' aria-describedby='loginHelp' placeholder='Введите логин'>
@@ -35,13 +36,6 @@
                     <div class='col-lg'></div>
                 </div>
             </div>";
-    }
-// Если не пусты, то 
-    else {
-        echo "<br /><br />Вы вошли на сайт, как ".$_SESSION['login']."<br /><br />";
-        echo "<form action='close.php' method='POST'>
-                <button type='submit' class='btn btn-primary'>Отправить</button>
-            </form>";
     }
 
 ?>

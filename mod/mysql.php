@@ -26,15 +26,11 @@ class Sql{
    * @return source
    * @uses $link
    */
-  public function SqlM($myhost, $myuser, $mypass, $mydbname){
+  public function __construct($myhost, $myuser, $mypass, $mydbname){
 
-    Sql::$link = mysql_connect($myhost, $myuser, $mypass);
-    if (!is_resource(Sql::$link)){
-      trigger_error(mysql_error(Sql::$link), E_USER_WARNING);
-    }
-    mysql_query('SET NAMES "utf8"', Sql::$link);
-    if (!mysql_select_db($mydbname, Sql::$link)) {
-      trigger_error(mysql_error(Sql::$link), E_USER_WARNING);
+    Sql::$link = new mysqli($myhost, $myuser, $mypass, $mydbname);
+    if (Sql::$link->connect_errno) {
+        echo "Не удалось подключиться к MySQL: (" . Sql::$link->connect_errno . ") " . Sql::$link->connect_error;
     }
   }
   /*================================================================*/
@@ -50,7 +46,7 @@ class Sql{
    */
   static public function sqlQuery($query, $phpscript, $phpline){
 
-    $res = mysql_query($query, Sql::$link);
+    $res = Sql::$link->query($query);
     if(!$res){
       trigger_error($phpscript.'||'.$phpline.'||'.mysql_error(Sql::$link).'||'.'Query: '.$query, E_USER_ERROR);
     }else{

@@ -9,6 +9,7 @@
   define('PAGE_DIR', 'pages');
   define('TPL_DIR', 'templates');
   define('ROOT_PAGE', 'index');
+  define('ADMIN_PAGE', 'admin');
   define('ROOT_EVENT', 'home');
   define('ROOT_URL', 'http://localhost/project_engine/');
   define('CSS_DIR', 'public/css');

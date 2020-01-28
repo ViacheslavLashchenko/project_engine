@@ -45,6 +45,11 @@
                                             <span>Контакты</span>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="<?php echo ROOT_URL . ADMIN_PAGE . '/login'?>">
+                                            <span>Вход</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
