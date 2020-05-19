@@ -11,6 +11,8 @@
                 <div class='row'>
                     <div class='col-lg'></div>
                     <div class='col-lg'>
+                    <div class='errors'>
+                    </div>
                         <form action='' method='post'>
                             <div class='form-group'>
                                 <label for='exampleInputEmail1'>Логин</label>
