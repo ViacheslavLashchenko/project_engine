@@ -1,8 +1,9 @@
 <?php
-    // if(!isset($_SESSION)) 
-    // { 
-    //     session_start();  
-    // }
+
+    if(!isset($_SESSION)) 
+    { 
+        session_start();  
+    }
     require_once('./config.php');
     require_once(MOD_DIR . DS . 'tpl.php');
     require_once(MOD_DIR . DS . 'event.php');

@@ -37,7 +37,7 @@ $(document).ready(function() {
         let val = thisElementForm.val().trim();
         switch(id) {
             case 'text-name':
-                let rv_name = /^[a-zA-Zа-яА-Я]+$/; // используем регулярное выражение
+                let rv_name = /^[0-9a-zA-Zа-яА-Я]+$/; // используем регулярное выражение
                 if (!val.length) {
                     thisElementForm.removeClass('not_error').addClass('error')
                     .css('border-color','red')
@@ -48,6 +48,25 @@ $(document).ready(function() {
                     .css('border-color','red')
                     .css('box-shadow','0px 0px 5px red');
                     thisElementForm.next().text("Пожалуйста, введите коректное Имя").fadeIn();
+                } else {
+                    thisElementForm.addClass('not_error')
+                    .css('border-color','green')
+                    .css('box-shadow','0px 0px 5px green');
+                    thisElementForm.next().fadeOut();
+                }
+                break;
+            case 'text-password':
+                let rv_password = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/; // используем регулярное выражение
+                if (!val.length) {
+                    thisElementForm.removeClass('not_error').addClass('error')
+                    .css('border-color','red')
+                    .css('box-shadow','0px 0px 5px red');
+                    thisElementForm.next().text("Пожалуйста, введите пароль").fadeIn();
+                } else if ((val.length < 4)) {
+                    thisElementForm.removeClass('not_error').addClass('error')
+                    .css('border-color','red')
+                    .css('box-shadow','0px 0px 5px red');
+                    thisElementForm.next().text("Пожалуйста, введите коректный пароль").fadeIn();
                 } else {
                     thisElementForm.addClass('not_error')
                     .css('border-color','green')
@@ -114,9 +133,9 @@ $(document).ready(function() {
         } // end switch(...          
     }
 
-    $('input[type="text"], [type="tel"], [type="email"], textarea').val('');
+    $('input[type="text"], [type="password"], [type="tel"], [type="email"], textarea').val('');
     // Устанавливаем обработчик потери фокуса для всех полей ввода текста
-    $('input#text-name, input#text-email, input#text-number, textarea#message').unbind().blur(function() {
+    $('input#text-name, input#text-password, input#text-email, input#text-number, textarea#message').unbind().blur(function() {
         formValidation($(this));
     }); // end blur()
 
@@ -135,7 +154,7 @@ $(document).ready(function() {
                 url: "validation_form.php",
                 type: "POST",
                 dataType: "text",
-                data: {'name': name, 'email': email, 'number': number, 'message': message},
+                data: {'name': name, 'password': password, 'email': email, 'number': number, 'message': message},
                 success: function(data) {
                     let checkResultObj = JSON.parse(data);
                     if (checkResultObj) {
@@ -158,4 +177,36 @@ $(document).ready(function() {
             return false;
         }
     }); // end submit()
+
+ $('form#login-form').submit(function(e) {
+        // Запрещаем стандартное поведение для кнопки submit
+        e.preventDefault();
+
+        if ($('.not_error').length == 2) {
+            let name = $('#text-name').val();
+            let password = $('#text-password').val();
+            
+            $.ajax({
+                url: "<?php echo ROOT_URL . ADMIN_PAGE . '/login'?>",
+                type: "POST",
+                dataType: "text",
+                data: {'name': name, 'password': password},
+                success: function(){
+                },
+                error: function() {
+                    alert("Ваше сообщение не отправлено!")
+                }
+            });// end ajax({...}
+        }
+         else {
+            $('.el_form').each(function() {
+                formValidation($(this));
+            });         
+            // Иначе, если количество полей с данным классом не равно значению 3, мы возвращаем false,
+            // останавливая отправку сообщения в невалидной форме
+            return false;
+        }
+    }); 
+
+   
 });// end script

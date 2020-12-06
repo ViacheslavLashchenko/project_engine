@@ -1,7 +1,5 @@
 <?php
 
-  session_start();
-
   date_default_timezone_set('Europe/Kiev');
 
   define('DS', DIRECTORY_SEPARATOR);
@@ -19,7 +17,7 @@
   $myhost = 'localhost';
   $myuser  = 'root';
   $mypass = '';
-  $mydbname = 'ffl';
+  $mydbname = 'testtable';
 
 
   ?>

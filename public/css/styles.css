@@ -3,10 +3,17 @@ html {
     font-size: 18px;
 }
 body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
     position: relative;
     min-height: 100vh;
     font-family: 'PT Sans', sans-serif;
     overflow-x: hidden !important;
+}
+section{
+    flex: 1 0 auto;
 }
 
 ::placeholder {
@@ -17,6 +24,9 @@ a {
     outline: none !important;
     text-decoration: none !important;
     color: #fff;
+}
+.register_link {
+    color: black !important;
 }
 a:hover {
     text-decoration: none !important;
@@ -1066,8 +1076,9 @@ margin-right: 7px;
 
 
 footer {
-    position: absolute;
-    bottom: 0;
+    flex: 0 0 auto;
+/*    position: absolute;
+    bottom: 0;*/
     width: 100%;
     background-color: rgb(244, 244, 244);
 }
@@ -1198,6 +1209,13 @@ line-height: 26px;
     padding: 5px 0;
     font-size: 12px;
     text-transform: uppercase;
+}
+
+.form-reg{
+    flex: 1 0 auto;
+}
+.form-reg .row{
+  margin-top: 50px;
 }
 
 
