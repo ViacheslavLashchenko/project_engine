@@ -1019,9 +1019,9 @@ margin-right: 7px;
     text-transform: uppercase;
 }
 
-.inform form input[type="text"], input[type="email"], input[type="tel"] {
+.inform form input[type="text"], input[type="email"], input[type="pas"], input[type="tel"] {
     position: relative;
-    background-color: #FFFFFF;
+    background-color: #FFFFFF !important;
     border: 1px solid #CCCCCC;
     height: 50px;
     padding: 0 15px;

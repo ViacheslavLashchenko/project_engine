@@ -2,11 +2,11 @@
     <div class='row'>
         <div class='col-lg'></div>
         <div class='col-lg'>
-            <form method="post" id="logins-form" novalidate>
+            <form method="post" id="login-form" novalidate>
                 <label>Введите данные для входа</label>
-                <input id="text-name" class="el_form" type="text" name="name" size="40" placeholder="login">
+                <input id="text-login" class="el_form" type="text" name="login" size="40" placeholder="login">
                 <div class="error-box"></div>
-                <input id="text-email" class="el_form" type="email" name="email" size="40" placeholder="email">
+                <input id="text-password" class="el_form" type="pas" name="password" size="40" placeholder="password">
                 <div class="error-box"></div>
                 <input id="submitForm" type="submit" value="Войти">
             </form>

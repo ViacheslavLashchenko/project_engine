@@ -49,7 +49,26 @@ $(document).ready(function() {
                     .css('box-shadow','0px 0px 5px red');
                     thisElementForm.next().text("Пожалуйста, введите коректное Имя").fadeIn();
                 } else {
-                    thisElementForm.addClass('not_error')
+                    thisElementForm.removeClass('error').addClass('not-error')
+                    .css('border-color','green')
+                    .css('box-shadow','0px 0px 5px green');
+                    thisElementForm.next().fadeOut();
+                }
+                break;
+            case 'text-login':
+                let rv_login = /^[0-9a-zA-Z]+$/; // используем регулярное выражение
+                if (!val.length) {
+                    thisElementForm.removeClass('not_error').addClass('error')
+                    .css('border-color','red')
+                    .css('box-shadow','0px 0px 5px red');
+                    thisElementForm.next().text("Пожалуйста, введите ваш login").fadeIn();
+                } else if ((val.length < 2) || !rv_login.test(val)) {
+                    thisElementForm.removeClass('not_error').addClass('error')
+                    .css('border-color','red')
+                    .css('box-shadow','0px 0px 5px red');
+                    thisElementForm.next().text("Пожалуйста, введите коректный login").fadeIn();
+                } else {
+                    thisElementForm.removeClass('error').addClass('not-error')
                     .css('border-color','green')
                     .css('box-shadow','0px 0px 5px green');
                     thisElementForm.next().fadeOut();
@@ -68,7 +87,7 @@ $(document).ready(function() {
                     .css('box-shadow','0px 0px 5px red');
                     thisElementForm.next().text("Пожалуйста, введите коректный пароль").fadeIn();
                 } else {
-                    thisElementForm.addClass('not_error')
+                    thisElementForm.removeClass('error').addClass('not-error')
                     .css('border-color','green')
                     .css('box-shadow','0px 0px 5px green');
                     thisElementForm.next().fadeOut();
@@ -87,7 +106,7 @@ $(document).ready(function() {
                     .css('box-shadow','0px 0px 5px red');
                     thisElementForm.next().text("Пожалуйста, введите коректный email").fadeIn();
                 } else {
-                    thisElementForm.addClass('not_error')
+                    thisElementForm.removeClass('error').addClass('not-error')
                     .css('border-color','green')
                     .css('box-shadow','0px 0px 5px green');
                     thisElementForm.next().fadeOut();
@@ -106,7 +125,7 @@ $(document).ready(function() {
                     .css('box-shadow','0px 0px 5px red');
                     thisElementForm.next().text("Пожалуйста, введите коректный номер телефона").fadeIn();
                 } else {
-                    thisElementForm.addClass('not_error')
+                    thisElementForm.removeClass('error').addClass('not-error')
                     .css('border-color','green')
                     .css('box-shadow','0px 0px 5px green');
                     thisElementForm.next().fadeOut();
@@ -124,7 +143,7 @@ $(document).ready(function() {
                     .css('box-shadow','0px 0px 5px red');
                     thisElementForm.next().text("Пожалуйста, уменьшите обьем вашего сообщения до 5000 символов").fadeIn();
                 } else {
-                    thisElementForm.addClass('not_error')
+                    thisElementForm.removeClass('error').addClass('not-error')
                     .css('border-color','green')
                     .css('box-shadow','0px 0px 5px green');
                     thisElementForm.next().fadeOut();
@@ -133,9 +152,9 @@ $(document).ready(function() {
         } // end switch(...          
     }
 
-    $('input[type="text"], [type="password"], [type="tel"], [type="email"], textarea').val('');
+    $('input[type="text"], [type="pas"], [type="tel"], [type="email"], textarea').val('');
     // Устанавливаем обработчик потери фокуса для всех полей ввода текста
-    $('input#text-name, input#text-password, input#text-email, input#text-number, textarea#message').unbind().blur(function() {
+    $('input#text-name, input#text-login, input#text-password, input#text-email, input#text-number, textarea#message').unbind().blur(function() {
         formValidation($(this));
     }); // end blur()
 
@@ -182,19 +201,19 @@ $(document).ready(function() {
         // Запрещаем стандартное поведение для кнопки submit
         e.preventDefault();
 
-        if ($('.not_error').length == 2) {
-            let name = $('#text-name').val();
+        if ($('.not_error').length == $('.el_form').length) {
+            let login = $('#text-login').val();
             let password = $('#text-password').val();
             
             $.ajax({
                 url: "<?php echo ROOT_URL . ADMIN_PAGE . '/login'?>",
                 type: "POST",
                 dataType: "text",
-                data: {'name': name, 'password': password},
+                data: {'login': login, 'password': password},
                 success: function(){
                 },
                 error: function() {
-                    alert("Ваше сообщение не отправлено!")
+                    alert("Вы не смогли войти на сайт")
                 }
             });// end ajax({...}
         }
