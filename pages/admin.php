@@ -71,7 +71,7 @@ class Admin {
             return $code;
         }
 
-        if(isset($_POST['submit']))
+        if(!empty($_POST))
         {
     // Вытаскиваем из БД запись, у которой логин равняеться введенному
             $query = mysqli_query(Sql::$link,"SELECT user_login, user_id, user_password FROM users WHERE user_login='".mysqli_real_escape_string(Sql::$link,$_POST['login'])."' LIMIT 1");
