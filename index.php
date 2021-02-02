@@ -8,6 +8,7 @@
     require_once(MOD_DIR . DS . 'tpl.php');
     require_once(MOD_DIR . DS . 'event.php');
     require_once(MOD_DIR . DS . 'mysql.php');
+    require_once(MOD_DIR . DS . 'security.php');
     $sql = new Sql($myhost, $myuser, $mypass, $mydbname);
     // $result = Sql::sqlQuery("SELECT * FROM `users`", __FILE__,__LINE__);
     // while ($row = $result->fetch_assoc()) {
@@ -21,7 +22,7 @@
         require_once(PAGE_DIR . DS . Event::$currentPage . '.php');
     } else
     {
-        header('Location: http://localhost/project_engine/404.php');
+        header("Location:" . ROOT_URL . "404.php");
     }
     $pageClass = ucfirst(Event::$currentPage);
     $pageObj = new $pageClass;

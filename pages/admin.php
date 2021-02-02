@@ -33,14 +33,14 @@ class Admin {
     // Если нет ошибок, то добавляем в БД нового пользователя
             if(count(Tpl::$vars['errors']) == 0)
             {
-
+                $levelUser = 1;
                 $login = $_POST['login'];
                 $email = $_POST['email'];
 
         // Убераем лишние пробелы и делаем двойное хеширование
                 $password = md5(md5(trim($_POST['password'])));
 
-                mysqli_query(Sql::$link,"INSERT INTO users SET user_login = '".$login."', user_email = '".$email."', user_password = '".$password."'");
+                mysqli_query(Sql::$link,"INSERT INTO users SET user_login = '".$login."', user_email = '".$email."', user_password = '".$password."', user_level = '".$levelUser."'");
                 header("Location: login"); exit();
             }
             else
@@ -74,7 +74,7 @@ class Admin {
         if(!empty($_POST))
         {
     // Вытаскиваем из БД запись, у которой логин равняеться введенному
-            $query = mysqli_query(Sql::$link,"SELECT user_login, user_id, user_password FROM users WHERE user_login='".mysqli_real_escape_string(Sql::$link,$_POST['login'])."' LIMIT 1");
+            $query = mysqli_query(Sql::$link,"SELECT user_login, user_id, user_password, user_level FROM users WHERE user_login='".mysqli_real_escape_string(Sql::$link,$_POST['login'])."' LIMIT 1");
             $data = mysqli_fetch_assoc($query);
 
     // Сравниваем пароли
@@ -97,6 +97,7 @@ class Admin {
                 $_SESSION['user']['login'] = $data['user_login'];
                 $_SESSION['user']['id'] = $data['user_id'];
                 $_SESSION['user']['email'] = $data['user_email'];
+                $_SESSION['user']['level'] = $data['user_level'];
         // Ставим куки
                 setcookie("id", $data['user_id'], time()+60*60*24*30, "/");
         setcookie("hash", $hash, time()+60*60*24*30, "/", null, null, true); // httponly !!!
@@ -114,6 +115,7 @@ class Admin {
 
     public function info()
     {
+        Secur::check_admin_access();
     //  // Скрипт проверки
 
     // if (isset($_SESSION['login'])) {
@@ -122,6 +124,8 @@ class Admin {
 
     public function change_cred()
     {
+        Secur::check_admin_access();
+
         if(isset($_POST['submit']))
         {
             Tpl::$vars['errors'] = [];
