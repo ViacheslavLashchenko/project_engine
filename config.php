@@ -18,6 +18,4 @@
   $myuser  = 'root';
   $mypass = '';
   $mydbname = 'testtable';
-
-
   ?>
