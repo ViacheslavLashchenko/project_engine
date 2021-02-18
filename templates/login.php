@@ -10,7 +10,7 @@
                 <div class="error-box"></div>
                 <input id="submitForm" type="submit" value="Войти">
             </form>
-            <a class="register_link" href="<?php echo ROOT_URL . ADMIN_PAGE . '/reg'?>">Регистрация</a>
+            <a class="register_link" href="<?php echo ROOT_URL . ROOT_PAGE . '/registration'?>">Регистрация</a>
         </div>
         <div class='col-lg'></div>
     </div>

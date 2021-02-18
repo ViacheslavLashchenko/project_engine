@@ -4,9 +4,9 @@ class Tpl {
     
     static public $vars;
     
-    public static function parsePage($tplName = '')
+    public static function parsePage($module = '')
     {
-        require_once TPL_DIR . DS . (empty($tplName) ? Event::$currentEvent : $tplName) . '.php';
+        require_once TPL_DIR . DS . $module . Event::$currentEvent . '.php';
     }
 }
 

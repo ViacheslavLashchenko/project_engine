@@ -46,7 +46,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo ROOT_URL . ADMIN_PAGE . '/login'?>">
+                                        <a href="<?php echo ROOT_URL . ROOT_PAGE . '/login'?>">
                                             <span>Вход</span>
                                         </a>
                                     </li>
@@ -100,7 +100,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo ROOT_URL . ROOT_PAGE . '/big_size'?>">
+                            <a href="<?php echo ROOT_URL . ROOT_PAGE . '/bigSize'?>">
                                 <img src="<?php echo ROOT_URL . IMAGES_DIR ?>/model6.jpg" alt=""/>
                                 <span>Большие рамзеры</span>
                             </a>
@@ -151,7 +151,7 @@
                                 <a title="" href="#">Специальные предложения</a>
                             </li>
                             <li class="main menu-item">
-                                <a href="<?php echo ROOT_URL . ROOT_PAGE . '/big_size'?>">Большие Размеры</a>
+                                <a href="<?php echo ROOT_URL . ROOT_PAGE . '/bigSize'?>">Большие Размеры</a>
                             </li>
                             <li class="main menu-item">
                                 <a href="<?php echo ROOT_URL . ROOT_PAGE . '/contacts'?>"><span class="contact_popup pum-trigger">Контакты</span></a>

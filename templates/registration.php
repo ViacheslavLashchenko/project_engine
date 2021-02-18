@@ -17,7 +17,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg"></div>
-                    <div class="col-lg"><a class="register_link" href="<?php echo ROOT_URL . ADMIN_PAGE . '/login'?>">Вход</a></div>
+                    <div class="col-lg"><a class="register_link" href="<?php echo ROOT_URL . ROOT_PAGE . '/login'?>">Вход</a></div>
                     <div class="col-lg"></div>
                 </div>
             </section>

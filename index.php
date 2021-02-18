@@ -12,7 +12,7 @@
     $event = new Event;
 
 
-    if (is_file(PAGE_DIR . DS . Event::$currentPage . '.php') && is_file(TPL_DIR . DS . Event::$currentEvent . '.php'))
+    if (is_file(PAGE_DIR . DS . Event::$currentPage . '.php') && (is_file(TPL_DIR . DS . Event::$currentEvent . '.php') || is_file(TPL_DIR . DS . 'admin/' . Event::$currentEvent . '.php')))
     {
         require_once(PAGE_DIR . DS . Event::$currentPage . '.php');
     } else

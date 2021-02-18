@@ -1002,6 +1002,9 @@ margin-right: 7px;
 
 
 
+
+
+
 .inform form {
     padding-left: 10px;
     padding-right: 10px;
@@ -1073,6 +1076,16 @@ margin-right: 7px;
     font-size: 12px;
 }
 
+
+
+.admin_sidebar .nav-link{
+    color: #4F4F4F;
+}
+
+.admin_sidebar .nav-link:hover {
+    color: #1b1111;
+    transition: all 0.2s;
+}
 
 
 footer {
